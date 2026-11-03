@@ -1,16 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/root"
-    android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/paper">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/paper">
     <include layout="@layout/toolbar"/>
-<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Liệt kê theo hãng và tìm xe có tình trạng Cần bảo dưỡng. Hai bộ lọc có thể kết hợp." android:textColor="@color/muted" android:textSize="14sp" android:padding="12dp" />
-<TextView style="@style/FormLabel" android:paddingStart="12dp" android:text="Hãng xe" android:labelFor="@+id/brandFilter"/>
-<Spinner android:id="@id/brandFilter" android:layout_width="match_parent" android:layout_height="56dp" android:layout_marginStart="12dp" android:layout_marginEnd="12dp"/>
-<CheckBox android:id="@+id/onlyMaintenance" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp" android:padding="12dp" android:text="Chỉ xe cần bảo dưỡng"/>
-<Button android:id="@+id/resetFilters" style="@style/ActionButton" android:text="Bỏ bộ lọc"/>
-<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="" android:textColor="@color/muted" android:textSize="14sp" android:padding="12dp" android:id="@+id/summary"/><FrameLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
-    <ListView android:id="@+id/list" android:layout_width="match_parent" android:layout_height="match_parent"
-        android:paddingStart="12dp" android:paddingEnd="12dp" android:clipToPadding="false" android:divider="@android:color/transparent" android:dividerHeight="8dp"/>
-    <TextView android:id="@+id/empty" android:layout_width="match_parent" android:layout_height="match_parent"
-        android:gravity="center" android:padding="24dp" android:text="Chưa có dữ liệu phù hợp.
-Hãy thêm dữ liệu hoặc thay đổi bộ lọc." android:textSize="16sp" android:textColor="@color/muted"/>
-</FrameLayout></LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Liệt kê theo hãng và tìm xe có tình trạng Cần bảo dưỡng. Hai bộ lọc có thể kết hợp."
+        android:textColor="@color/muted"
+        android:textSize="14sp"
+        android:padding="12dp" />
+    <TextView
+        style="@style/FormLabel"
+        android:paddingStart="12dp"
+        android:text="Hãng xe"
+        android:labelFor="@+id/brandFilter"/>
+    <Spinner
+        android:id="@id/brandFilter"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"/>
+    <CheckBox
+        android:id="@+id/onlyMaintenance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:padding="12dp"
+        android:text="Chỉ xe cần bảo dưỡng"/>
+    <Button
+        android:id="@+id/resetFilters"
+        style="@style/ActionButton"
+        android:text="Bỏ bộ lọc"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/muted"
+        android:textSize="14sp"
+        android:padding="12dp"
+        android:id="@+id/summary"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:clipToPadding="false"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="8dp"/>
+        <TextView
+            android:id="@+id/empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="24dp"
+            android:text="Chưa có dữ liệu phù hợp. Hãy thêm dữ liệu hoặc thay đổi bộ lọc."
+            android:textSize="16sp"
+            android:textColor="@color/muted"/>
+    </FrameLayout>
+</LinearLayout>
