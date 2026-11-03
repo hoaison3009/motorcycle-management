@@ -57,14 +57,17 @@ public class ReportActivity extends BaseActivity {
         execute(()-> {
             updating=true;
             try {
-                List<String> brands=new ArrayList<>();brands.add("Tất cả hãng");brands.addAll(db.brands());
+                List<String> brands = new ArrayList<>();
+                brands.add("Tất cả hãng");
+                brands.addAll(db.brands());
                 spinner(brand,brands);int selection=0;
+
                 for(int i=1;i<brands.size();i++){
                     if(InputRules.normalize(brands.get(i)).equals(selectedBrand)){
                         selection=i;
                     }
                 }
-                if(selection==0)selectedBrand="";
+                if(selection == 0)selectedBrand="";
                 brand.setSelection(selection);
             } finally {
                 updating=false;
@@ -76,9 +79,15 @@ public class ReportActivity extends BaseActivity {
         if(adapter==null||updating)return;
         execute(()-> {
             vehicles=db.findVehicles("",selectedBrand,onlyMaintenance.isChecked());
+
             List<RowAdapter.Row> rows=new ArrayList<>();
-            for(Vehicle x:vehicles)rows.add(new RowAdapter.Row(x.id,x.plate+" · "+x.brand,x.code+"  |  "+x.statusLabel()));
-            adapter.setNotifyOnChange(false);adapter.clear();adapter.addAll(rows);adapter.notifyDataSetChanged();
+            for(Vehicle x:vehicles){
+                rows.add(new RowAdapter.Row(x.id,x.plate+" · "+x.brand,x.code+"  |  "+x.statusLabel()));
+            }
+
+            adapter.setNotifyOnChange(false);
+            adapter.clear();adapter.addAll(rows);
+            adapter.notifyDataSetChanged();
             ((TextView)findViewById(R.id.summary)).setText("Kết quả: "+vehicles.size()+" xe"+(onlyMaintenance.isChecked()?" cần bảo dưỡng":""));
         },"Không truy vấn được dữ liệu.");
     }
