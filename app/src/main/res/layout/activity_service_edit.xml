@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/paper">
+    <include layout="@layout/toolbar"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Giá dùng đơn vị VNĐ. Sửa giá tại đây chỉ áp dụng cho những lần gán mới."
+                android:textColor="@color/muted"
+                android:textSize="14sp"
+                android:padding="12dp" />
+            <TextView style="@style/FormLabel"
+                android:text="Mã dịch vụ *"
+                android:labelFor="@+id/editCode"/>
+            <EditText
+                android:id="@id/editCode" style="@style/FormInput"
+                android:hint="Ví dụ: DV001"
+                android:inputType="textCapCharacters"
+                android:maxLength="20"/>
+                <TextView style="@style/FormLabel"
+                    android:text="Tên dịch vụ *"
+                    android:labelFor="@+id/editName"/>
+            <EditText
+                android:id="@id/editName"
+                style="@style/FormInput"
+                android:hint="Ví dụ: Thay dầu động cơ"
+                android:inputType="textCapSentences"
+                android:maxLength="100"/>
+            <TextView
+                style="@style/FormLabel"
+                android:text="Giá dịch vụ (VNĐ) *"
+                android:labelFor="@+id/editPrice"/>
+            <EditText
+                android:id="@id/editPrice"
+                style="@style/FormInput"
+                android:hint="Ví dụ: 120000"
+                android:inputType="number"
+                android:maxLength="10"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nhập số nguyên từ 0 đến 1.000.000.000, không dùng dấu chấm hoặc dấu phẩy."
+                android:textColor="@color/muted"
+                android:textSize="14sp"
+                android:padding="12dp" />
+            <Button
+                android:id="@+id/btnSave"
+                style="@style/ActionButton"
+                android:text="Lưu dịch vụ"/>
+            <Button
+                android:id="@+id/btnDelete"
+                style="@style/ActionButton"
+                android:text="Xóa dịch vụ"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

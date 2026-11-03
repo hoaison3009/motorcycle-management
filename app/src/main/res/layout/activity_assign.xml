@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/paper">
+    <include layout="@layout/toolbar"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Một xe có thể sử dụng nhiều dịch vụ. Mỗi lần gán tạo một phiếu; không gán trùng dịch vụ khi phiếu trước chưa hoàn thành."
+                android:textColor="@color/muted"
+                android:textSize="14sp"
+                android:padding="12dp"
+                android:id="@+id/assignInfo"/>
+            <TextView
+                style="@style/FormLabel"
+                android:text="Xe *"
+                android:labelFor="@+id/vehicleSpinner"/>
+            <Spinner
+                android:id="@id/vehicleSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="64dp"
+                android:spinnerMode="dialog"
+                android:prompt="@string/app_name"/>
+            <TextView
+                style="@style/FormLabel"
+                android:text="Dịch vụ *"
+                android:labelFor="@+id/serviceSpinner"/>
+            <Spinner
+                android:id="@id/serviceSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="64dp"
+                android:spinnerMode="dialog"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Giá khi gán"
+                android:textColor="@color/muted"
+                android:textSize="14sp"
+                android:padding="12dp"
+                android:id="@+id/pricePreview"/>
+            <TextView
+                style="@style/FormLabel"
+                android:text="Ghi chú"
+                android:labelFor="@+id/editNote"/>
+            <EditText
+                android:id="@id/editNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="112dp"
+                android:gravity="top|start"
+                android:padding="12dp"
+                android:inputType="textCapSentences|textMultiLine"
+                android:maxLength="500"
+                android:hint="Nội dung cần thực hiện (không bắt buộc)"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gán dịch vụ không tự đổi tình trạng xe. Tên dịch vụ và giá được lưu lại tại thời điểm gán."
+                android:textColor="@color/muted"
+                android:textSize="14sp"
+                android:padding="12dp" />
+            <Button
+                android:id="@+id/btnSave"
+                style="@style/ActionButton"
+                android:text="Lưu phiếu dịch vụ"/>
+</LinearLayout>
+    </ScrollView>
+</LinearLayout>

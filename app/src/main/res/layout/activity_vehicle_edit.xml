@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/paper">
+    <include layout="@layout/toolbar"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mã xe và biển số là duy nhất. Hãng xe có thể chọn gợi ý hoặc tự nhập."
+                android:textColor="@color/muted"
+                android:textSize="14sp"
+                android:padding="12dp" />
+            <TextView
+                style="@style/FormLabel"
+                android:text="Mã xe *"
+                android:labelFor="@+id/editCode"/>
+            <EditText
+                android:id="@id/editCode" style="@style/FormInput"
+                android:hint="Ví dụ: XE001"
+                android:inputType="textCapCharacters"
+                android:maxLength="20"/>
+            <TextView
+                style="@style/FormLabel"
+                android:text="Biển số *"
+                android:labelFor="@+id/editPlate"/>
+            <EditText
+                android:id="@id/editPlate"
+                style="@style/FormInput"
+                android:hint="Ví dụ: 29B1-123.45"
+                android:inputType="textCapCharacters"
+                android:maxLength="20"/><TextView
+                style="@style/FormLabel"
+                android:text="Hãng xe *"
+                android:labelFor="@+id/editBrand"/>
+            <AutoCompleteTextView
+                android:id="@id/editBrand"
+                style="@style/FormInput"
+                android:hint="Ví dụ: Honda"
+                android:inputType="textCapWords"
+                android:maxLength="40"/>
+            <TextView
+                style="@style/FormLabel"
+                android:text="Tình trạng *"
+                android:labelFor="@+id/status"/>
+            <Spinner
+                android:id="@id/status"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:spinnerMode="dropdown"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chọn Cần bảo dưỡng để đưa xe vào báo cáo bảo dưỡng. Tình trạng được cập nhật thủ công sau khi kiểm tra xe."
+                android:textColor="@color/muted"
+                android:textSize="14sp"
+                android:padding="12dp" />
+            <Button
+                android:id="@+id/btnSave"
+                style="@style/ActionButton"
+                android:text="Lưu xe"/>
+            <Button
+                android:id="@+id/btnAssign"
+                style="@style/ActionButton"
+                android:text="Gán dịch vụ cho xe đã lưu"/>
+            <Button
+                android:id="@+id/btnDelete"
+                style="@style/ActionButton"
+                android:text="Xóa xe"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

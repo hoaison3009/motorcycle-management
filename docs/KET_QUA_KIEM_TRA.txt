@@ -1,0 +1,24 @@
+KẾT QUẢ KIỂM TRA MÃ NGUỒN – 03/11/2026
+
+Lệnh đã chạy:
+python tools/check_offline.py
+
+Kết quả:
+Parsed 14 Java source files successfully (syntax only).
+19 Java rules checks passed.
+19 SQLite checks passed using DDL extracted from DatabaseHelper.java.
+20 XML files parsed; resource references and manifest activities resolved.
+Offline checks passed. Android Gradle build and device tests must still be run in Android Studio.
+
+Môi trường kiểm tra: Python 3.12, Java/OpenJDK 17 (compiler module), SQLite của Python.
+
+Giới hạn:
+- Chưa chạy assembleDebug, testDebugUnitTest hoặc connectedDebugAndroidTest.
+- Chưa chạy UI trên emulator/điện thoại, chưa chụp ảnh giao diện Android.
+- Không có APK đi kèm.
+- Gradle wrapper của dự án gốc không tải được distribution trong môi trường bàn giao:
+  java.net.SocketException: Network is unreachable.
+- Chưa có Android SDK trong môi trường bàn giao.
+- Kiểm tra cú pháp Java không xác nhận đầy đủ type resolution/API Android.
+
+Xem README.md để mở dự án, cài công cụ và chạy kiểm thử Android.
