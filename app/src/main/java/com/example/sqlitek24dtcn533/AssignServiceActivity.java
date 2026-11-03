@@ -19,16 +19,27 @@ public class AssignServiceActivity extends BaseActivity {
     private List<ServiceItem> services=new ArrayList<>();
     @Override protected void onCreate(Bundle state) {
         super.onCreate(state);screen(R.layout.activity_assign,"Gán xe vào dịch vụ");
-        vehicle=findViewById(R.id.vehicleSpinner);service=findViewById(R.id.serviceSpinner);
-        note=findViewById(R.id.editNote);save=findViewById(R.id.btnSave);
+
+        vehicle=findViewById(R.id.vehicleSpinner);
+        service=findViewById(R.id.serviceSpinner);
+        note=findViewById(R.id.editNote);
+        save=findViewById(R.id.btnSave);
         save.setEnabled(false);
+
         execute(()-> {
-            vehicles=db.findVehicles("",null,false);services=db.findServices("");
-            spinner(vehicle,vehicles);spinner(service,services);
-            long selected=state==null?getIntent().getLongExtra("vehicleId",0):state.getLong("vehicleId",0);
-            long serviceId=state==null?0:state.getLong("serviceId",0);
-            for(int i=0;i<vehicles.size();i++)if(vehicles.get(i).id==selected)vehicle.setSelection(i);
-            for(int i=0;i<services.size();i++)if(services.get(i).id==serviceId)service.setSelection(i);
+            vehicles = db.findVehicles("",null,false);
+            services=db.findServices("");
+            spinner(vehicle,vehicles);
+            spinner(service,services);
+
+            long selected = state == null ? getIntent().getLongExtra("vehicleId",0):state.getLong("vehicleId",0);
+            long serviceId = state == null? 0 : state.getLong("serviceId",0);
+            for(int i=0;i<vehicles.size();i++){
+                if(vehicles.get(i).id == selected)vehicle.setSelection(i);
+            }
+            for(int i=0;i<services.size();i++){
+                if(services.get(i).id==serviceId)service.setSelection(i);
+            }
             if(vehicles.isEmpty() || services.isEmpty()) {
                 ((TextView)findViewById(R.id.assignInfo)).setText("Cần có ít nhất một xe và một dịch vụ. Quay lại màn hình chính để thêm dữ liệu.");
             } else save.setEnabled(true);

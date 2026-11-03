@@ -8,12 +8,28 @@ import java.util.Locale;
 public final class RepairOrder {
     public final long id, vehicleId, serviceId, price, assignedAt, completedAt;
     public final String vehicleCode, plate, serviceCode, serviceName, status, note;
-    public RepairOrder(long id, long vehicleId, long serviceId, long price, long assignedAt,
-                       long completedAt, String vehicleCode, String plate, String serviceCode,
-                       String serviceName, String status, String note) {
-        this.id=id; this.vehicleId=vehicleId; this.serviceId=serviceId; this.price=price;
-        this.assignedAt=assignedAt; this.completedAt=completedAt; this.vehicleCode=vehicleCode;
-        this.plate=plate; this.serviceCode=serviceCode; this.serviceName=serviceName;
+    public RepairOrder(
+            long id,
+            long vehicleId,
+            long serviceId,
+            long price,
+            long assignedAt,
+            long completedAt,
+            String vehicleCode,
+            String plate,
+            String serviceCode,
+            String serviceName,
+            String status,
+            String note
+    ) {
+        this.id=id; this.vehicleId=vehicleId;
+        this.serviceId=serviceId; this.price=price;
+        this.assignedAt=assignedAt;
+        this.completedAt=completedAt;
+        this.vehicleCode=vehicleCode;
+        this.plate=plate;
+        this.serviceCode=serviceCode;
+        this.serviceName=serviceName;
         this.status=status; this.note=note;
     }
     public boolean pending() { return "PENDING".equals(status); }

@@ -17,7 +17,7 @@ public final class RowAdapter extends ArrayAdapter<RowAdapter.Row> {
     }
     public RowAdapter(Context context) { super(context,0,new ArrayList<>()); }
     @Override public View getView(int position,View recycled,ViewGroup parent) {
-        View view=recycled==null ? LayoutInflater.from(getContext()).inflate(R.layout.row_item,parent,false) : recycled;
+        View view = recycled == null ? LayoutInflater.from(getContext()).inflate(R.layout.row_item,parent,false) : recycled;
         Row row=getItem(position);
         if(row!=null) {
             ((TextView)view.findViewById(R.id.rowTitle)).setText(row.title);

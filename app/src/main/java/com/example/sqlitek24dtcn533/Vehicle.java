@@ -10,7 +10,7 @@ public final class Vehicle {
     public final long id;
     public final String code, plate, brand, status;
     public Vehicle(long id, String code, String plate, String brand, String status) {
-        this.id=id; this.code=code; this.plate=plate; this.brand=brand; this.status=status;
+        this.id = id; this.code = code; this.plate = plate; this.brand = brand; this.status = status;
     }
     public String statusLabel() {
         for (int i=0; i<STATUSES.length; i++) if (STATUSES[i].equals(status)) return LABELS[i];

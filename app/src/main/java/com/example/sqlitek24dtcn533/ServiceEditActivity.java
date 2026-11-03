@@ -10,13 +10,22 @@ public class ServiceEditActivity extends BaseActivity {
     private EditText code,name,price;
     @Override protected void onCreate(Bundle state) {
         super.onCreate(state); id=getIntent().getLongExtra("id",0);
+
         screen(R.layout.activity_service_edit,id>0?"Thông tin dịch vụ":"Thêm dịch vụ");
-        code=findViewById(R.id.editCode); name=findViewById(R.id.editName); price=findViewById(R.id.editPrice);
+        code=findViewById(R.id.editCode);
+        name=findViewById(R.id.editName);
+        price=findViewById(R.id.editPrice);
+
         if(id>0)execute(()-> {
             ServiceItem x=db.getService(id);
             if(x==null) {message("Dịch vụ không còn tồn tại");finish();return;}
-            if(state==null) {code.setText(x.code);name.setText(x.name);price.setText(String.valueOf(x.price));}
+            if(state==null) {
+                code.setText(x.code);
+                name.setText(x.name);
+                price.setText(String.valueOf(x.price));
+            }
         },"Không đọc được dịch vụ.");
+
         findViewById(R.id.btnSave).setOnClickListener(v->execute(()-> {
             db.saveService(new ServiceItem(id,value(code),value(name),InputRules.price(value(price))));saved();
         },"Mã dịch vụ đã tồn tại. Vui lòng dùng mã khác."));

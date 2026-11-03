@@ -3,7 +3,6 @@ package com.example.sqlitek24dtcn533;
 
 import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteException;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -28,8 +27,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
 
         WindowCompat.setDecorFitsSystemWindows(getWindow(),false);
-        View root=findViewById(R.id.root);
-        int left=root.getPaddingLeft(),top=root.getPaddingTop(),right=root.getPaddingRight(),bottom=root.getPaddingBottom();
+        View root = findViewById(R.id.root);
+        int left = root.getPaddingLeft(),
+            top = root.getPaddingTop(),
+            right = root.getPaddingRight(),
+            bottom = root.getPaddingBottom();
         ViewCompat.setOnApplyWindowInsetsListener(root,(v,insets) -> {
             Insets bars=insets.getInsets(WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.ime());
             v.setPadding(left+bars.left,top+bars.top,right+bars.right,bottom+bars.bottom);
@@ -50,7 +52,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
     protected void confirm(String title,String detail,Runnable operation) {
         new AlertDialog.Builder(this).setTitle(title).setMessage(detail)
-                .setNegativeButton("Hủy",null).setPositiveButton("Đồng ý",(d,w)->operation.run()).show();
+            .setNegativeButton("Hủy",null).setPositiveButton("Đồng ý",(d,w)->operation.run()).show();
     }
     protected <T> void spinner(Spinner view,List<T> values) {
         ArrayAdapter<T> adapter=new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,values);
@@ -59,7 +61,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
     protected void saved() { message("Đã lưu thành công"); setResult(RESULT_OK); finish(); }
     @Override protected void onDestroy() {
-        if(db!=null)db.close();
+        if(db != null) db.close();
         super.onDestroy();
     }
 }

@@ -21,21 +21,35 @@ public class ReportActivity extends BaseActivity {
     private List<Vehicle> vehicles=new ArrayList<>();
     @Override protected void onCreate(Bundle state) {
         super.onCreate(state);screen(R.layout.activity_report,"Báo cáo và truy vấn xe");
-        brand=findViewById(R.id.brandFilter);onlyMaintenance=findViewById(R.id.onlyMaintenance);
+
+        brand=findViewById(R.id.brandFilter);
+        onlyMaintenance=findViewById(R.id.onlyMaintenance);
         adapter=new RowAdapter(this);
-        ListView list=findViewById(R.id.list);list.setAdapter(adapter);list.setEmptyView(findViewById(R.id.empty));
-        if(state!=null) {selectedBrand=state.getString("brand","");onlyMaintenance.setChecked(state.getBoolean("maintenance",false));}
+
+        ListView list=findViewById(R.id.list);
+        list.setAdapter(adapter);
+        list.setEmptyView(findViewById(R.id.empty));
+
+        if(state!=null) {
+            selectedBrand = state.getString("brand","");
+            onlyMaintenance.setChecked(state.getBoolean("maintenance",false));
+        }
+
         brand.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent,View view,int position,long id) {
-                if(updating)return;
-                selectedBrand=position==0?"":InputRules.normalize(parent.getItemAtPosition(position).toString());refresh();
+                if(updating) return;
+                selectedBrand = position == 0 ? "" : InputRules.normalize(parent.getItemAtPosition(position).toString());
+                refresh();
             }
             public void onNothingSelected(AdapterView<?> parent) {}
         });
         onlyMaintenance.setOnCheckedChangeListener((b,checked)->refresh());
+
         findViewById(R.id.resetFilters).setOnClickListener(v->{selectedBrand="";brand.setSelection(0);onlyMaintenance.setChecked(false);refresh();});
         list.setOnItemClickListener((p,v,position,id)-> {
-            if(position<vehicles.size())startActivity(new Intent(this,VehicleEditActivity.class).putExtra("id",vehicles.get(position).id));
+            if(position<vehicles.size()){
+                startActivity(new Intent(this,VehicleEditActivity.class).putExtra("id",vehicles.get(position).id));
+            }
         });
     }
     @Override protected void onResume() {
@@ -45,10 +59,16 @@ public class ReportActivity extends BaseActivity {
             try {
                 List<String> brands=new ArrayList<>();brands.add("Tất cả hãng");brands.addAll(db.brands());
                 spinner(brand,brands);int selection=0;
-                for(int i=1;i<brands.size();i++)if(InputRules.normalize(brands.get(i)).equals(selectedBrand))selection=i;
+                for(int i=1;i<brands.size();i++){
+                    if(InputRules.normalize(brands.get(i)).equals(selectedBrand)){
+                        selection=i;
+                    }
+                }
                 if(selection==0)selectedBrand="";
                 brand.setSelection(selection);
-            } finally {updating=false;}
+            } finally {
+                updating=false;
+            }
             refresh();
         },"Không tải được hãng xe.");
     }
